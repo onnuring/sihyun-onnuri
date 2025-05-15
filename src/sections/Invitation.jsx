@@ -2,32 +2,47 @@ import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const message = "저희 결혼합니다. 함께 축하해주세요.";
+// const message = `
+// 7년 전 여름날 부터,
+// 긴 시간 한결같은 마음으로 이어온 저희 사랑도
+// 이제 부부로서 새로운 여름을 맞이하려 합니다.
+
+// 저희 두 사람의 뜻깊은 날,
+// 귀한 분들을 모시고 첫걸음을 내딛고자 합니다.
+// 기쁨의 순간에 함께해 주신다면,
+// 그 따뜻한 축복을 오래도록 간직하겠습니다.
+// `;
+const message = `
+오랜 시간 함께해 온 저희가
+이제 부부로서 새로운 출발을 하려합니다.
+저희 두 사람이 첫걸음을 내딛는 
+기쁨의 순간에 함께해 주신다면,
+그 따뜻한 축복을 오래도록 간직하겠습니다.
+`;
 
 const Invitation = () => {
-  const textRef = useRef([]);
+  const lineRefs = useRef([]);
 
   useEffect(() => {
-    gsap.from(
-      textRef.current,
-      { opacity: 0, y: 10 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        ease: "power2.out",
-        duration: 0.6,
-      }
-    );
+    gsap.from(lineRefs.current, {
+      opacity: 0,
+      y: 20,
+      stagger: 1.0,
+      duration: 3.5,
+      ease: "power2.out",
+    });
   }, []);
 
   return (
     <Wrapper className="invitation-text">
-      {message.split("").map((char, i) => (
-        <Letter key={i} ref={(el) => (textRef.current[i] = el)}>
-          {char === " " ? "\u00A0" : char}
-        </Letter>
-      ))}
+      {message
+        .trim()
+        .split("\n")
+        .map((line, index) => (
+          <Line key={index} ref={(el) => (lineRefs.current[index] = el)}>
+            {line}
+          </Line>
+        ))}
     </Wrapper>
   );
 };
@@ -35,21 +50,14 @@ const Invitation = () => {
 export default Invitation;
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 20vh;
-  outline: 2px solid red;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1.6;
+  font-size: 16px;
+  font-weight: 100;
   text-align: center;
-  white-space: pre-wrap;
+  font-family: invitationFont;
+  line-height: 2.3;
 `;
 
-const Letter = styled.span`
-  display: inline-block;
+const Line = styled.div`
   opacity: 0;
-  transform: translateY(10px); /* 초기 위치 */
+  transform: translateY(20px);
 `;
