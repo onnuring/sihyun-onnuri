@@ -14,11 +14,13 @@ const Home = () => {
   const topRef = useRef(null);
   const textRef = useRef(null);
   const hasPlayed = useRef(false);
+  const nameRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // 병렬 애니메이션 타임라인
       gsap.set(wrapperRef.current, { scale: 0.5 });
+      gsap.set(nameRef.current, { bottom: "-40px", opacity: 0 });
       gsap
         .timeline({
           scrollTrigger: {
@@ -86,6 +88,16 @@ const Home = () => {
             ease: "power2.out",
           },
           1
+        )
+        .to(
+          nameRef.current,
+          {
+            duration: 4,
+            bottom: "58px",
+            opacity: 1,
+            ease: "power2.out",
+          },
+          3
         );
     }, containerRef);
 
@@ -93,8 +105,8 @@ const Home = () => {
   }, []);
 
   return (
-    <Wrapper ref={containerRef}>
-      <PaperWrapper ref={wrapperRef}>
+    <HomeContainer ref={containerRef}>
+      <EnvelopeWrapper ref={wrapperRef}>
         <PaperBottom>
           <Title>소중한 분들을 초대합니다</Title>
           <Invitation />
@@ -110,26 +122,36 @@ const Home = () => {
             <h2>Onnuri</h2>
           </TextWrapper>
         </PaperTop>
-      </PaperWrapper>
-    </Wrapper>
+      </EnvelopeWrapper>
+      <NameWrapper ref={nameRef}>
+        <p>
+          김태한 <span className="heart">❤︎</span> 장재인 <span>의 차남</span>{" "}
+          김시현
+        </p>
+        <p>
+          김진호 <span className="heart">❤︎</span> 이가인 <span>의 차녀</span>{" "}
+          김온누리
+        </p>
+      </NameWrapper>
+    </HomeContainer>
   );
 };
 
 export default Home;
 
-const Wrapper = styled.section`
-  min-height: 100vh;
+const HomeContainer = styled.section`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  outline: 2px solid red;
 `;
 
-const PaperWrapper = styled.div`
+const EnvelopeWrapper = styled.div`
   width: 100vw;
   height: 100vw;
+  max-width: 456px;
+  max-height: 456px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -159,12 +181,12 @@ const PaperBottom = styled(PaperFace)`
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
-  min-height: 100vw;
 `;
 
 const PaperTop = styled(PaperFace)`
   top: 0;
   height: 80vw;
+  max-height: 365px;
   transform-origin: bottom center;
   transform: rotateX(0deg); /* 접힌 상태에서 시작 */
   z-index: 2;
@@ -177,11 +199,11 @@ const TextWrapper = styled.div`
   font-family: "WindSong", cursive;
   font-display: swap;
   h2 {
-    font-size: 13.0208vw;
+    font-size: 60px;
     font-weight: 100;
   }
   p {
-    font-size: 9.375vw;
+    font-size: 50px;
     font-weight: 100;
   }
 `;
@@ -197,5 +219,23 @@ const BottomText = styled.div`
   }
   p:last-child {
     font-family: serif;
+  }
+`;
+
+const NameWrapper = styled.div`
+  position: absolute;
+  font-family: basicFont;
+  p {
+    font-size: 18px;
+    line-height: 2;
+    span {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .heart {
+      font-size: 8px;
+      color: #000;
+      vertical-align: middle;
+    }
   }
 `;
