@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { paperBg } from "../styles/paperBg";
 import Invitation from "./Invitation";
+import Title from "../components/Title";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,6 @@ const Home = () => {
   const topRef = useRef(null);
   const textRef = useRef(null);
   const hasPlayed = useRef(false);
-  const bottomRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -34,26 +34,26 @@ const Home = () => {
                 hasPlayed.current = true;
 
                 gsap.fromTo(
-                  ".invitation-text span",
+                  ".invitation-text div",
                   { opacity: 0, y: 10 },
                   {
                     opacity: 1,
                     y: 0,
-                    stagger: 0.1,
-                    duration: 0.6,
+                    stagger: 1.0,
+                    duration: 3,
                     ease: "power2.out",
                   }
                 );
               }
 
-              if (progress < 0.2 && hasPlayed.current) {
+              if (progress < 0.1 && hasPlayed.current) {
                 hasPlayed.current = false;
 
-                gsap.to(".invitation-text span", {
+                gsap.killTweensOf(".invitation-text div");
+                gsap.set(".invitation-text div", {
                   opacity: 0,
-                  y: -10,
-                  duration: 0.4,
-                  ease: "power1.in",
+                  y: 10,
+                  clearProps: "all", // 스타일 잔재 제거
                 });
               }
             },
@@ -63,7 +63,7 @@ const Home = () => {
           topRef.current,
           {
             rotateX: 100,
-            duration: 2.5,
+            duration: 4,
             ease: "power2.out",
             transformOrigin: "top center",
           },
@@ -73,7 +73,7 @@ const Home = () => {
           wrapperRef.current,
           {
             scale: 1,
-            duration: 3.5,
+            duration: 6,
             y: -50, // 아래 쪽으로 이동
             ease: "power2.out",
           },
@@ -85,16 +85,7 @@ const Home = () => {
             opacity: 0,
             ease: "power2.out",
           },
-          0.6
-        )
-        .to(
-          bottomRef.current,
-          {
-            height: "100vh", // ← 펼쳐지면서 화면을 꽉 채움
-            duration: 1.2,
-            ease: "power2.out",
-          },
-          2.5 // PaperTop 열리는 시점과 맞춰 조정
+          1
         );
     }, containerRef);
 
@@ -104,8 +95,13 @@ const Home = () => {
   return (
     <Wrapper ref={containerRef}>
       <PaperWrapper ref={wrapperRef}>
-        <PaperBottom ref={bottomRef}>
+        <PaperBottom>
+          <Title>소중한 분들을 초대합니다</Title>
           <Invitation />
+          <BottomText>
+            <p>2025년 7월 19일 낮12시</p>
+            <p>Maison D'ltalie</p>
+          </BottomText>
         </PaperBottom>
         <PaperTop ref={topRef}>
           <TextWrapper ref={textRef}>
@@ -158,7 +154,12 @@ const PaperFace = styled.div`
 
 const PaperBottom = styled(PaperFace)`
   top: 0;
+  padding: 26px 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   z-index: 1;
+  min-height: 100vw;
 `;
 
 const PaperTop = styled(PaperFace)`
@@ -175,7 +176,6 @@ const TextWrapper = styled.div`
   pointer-events: none;
   font-family: "WindSong", cursive;
   font-display: swap;
-  z-index: 99;
   h2 {
     font-size: 13.0208vw;
     font-weight: 100;
@@ -183,5 +183,19 @@ const TextWrapper = styled.div`
   p {
     font-size: 9.375vw;
     font-weight: 100;
+  }
+`;
+
+const BottomText = styled.div`
+  font-family: basicFont;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  p {
+    font-size: 18px;
+  }
+  p:last-child {
+    font-family: serif;
   }
 `;

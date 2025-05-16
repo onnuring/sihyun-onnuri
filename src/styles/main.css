@@ -1,4 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Waterfall&family=WindSong:wght@400;500&display=swap");
+@font-face {
+  font-family: invitationFont;
+  src: url("../assets/fonts/KOTRA_SONGEULSSI.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: basicFont;
+  src: url("../assets/fonts/GowunDodum-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --title-color: #d97d83;
@@ -8,11 +22,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* * {
-  font-family: "Noto Serif KR", serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-} */
 
 /* 카카오맵 버튼 없애기 */
 .wrap_controllers {
