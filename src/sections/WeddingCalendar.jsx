@@ -53,11 +53,15 @@ const WeddingCalendar = () => {
       <StyledCalendar
         value={WEDDING_DATE}
         calendarType="US"
-        tileClassName={({ date }) =>
-          date.toDateString() === WEDDING_DATE.toDateString()
-            ? "highlight"
-            : null
-        }
+        tileClassName={({ date }) => {
+          const isWeddingDate =
+            date.toDateString() === WEDDING_DATE.toDateString();
+          const isSunday = date.getDay() === 0;
+
+          if (isWeddingDate) return "highlight";
+          if (isSunday) return "sunday";
+          return null;
+        }}
         tileContent={({ date }) =>
           date.toDateString() === WEDDING_DATE.toDateString() ? (
             <div
@@ -140,6 +144,12 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__tile--now {
     color: #fff;
     font-weight: bold;
+  }
+  .react-calendar__month-view__weekdays__weekday:first-child abbr {
+    color: #ae360e;
+  }
+  .sunday {
+    color: #ae360e !important;
   }
 
   .highlight {
