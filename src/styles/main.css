@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Waterfall&family=WindSong:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Cutive+Mono&family=Special+Elite&display=swap");
 @font-face {
   font-family: invitationFont;
   src: url("../assets/fonts/KOTRA_SONGEULSSI.ttf");
@@ -21,6 +22,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.pin-spacer {
+  overflow-x: hidden !important;
 }
 
 /* 카카오맵 버튼 없애기 */

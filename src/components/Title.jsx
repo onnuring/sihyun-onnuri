@@ -8,7 +8,8 @@ const Title = ({ children }) => {
 export default Title;
 
 const Text = styled.h2`
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 200;
   font-family: basicFont;
+  /* text-align: ${({ textAlign }) => textAlign || "center"}; */
 `;

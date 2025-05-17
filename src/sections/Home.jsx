@@ -5,6 +5,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { paperBg } from "../styles/paperBg";
 import Invitation from "./Invitation";
 import Title from "../components/Title";
+import SubTitle from "../components/SubTitle";
+import { sealingWax } from "../assets/images";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +22,7 @@ const Home = () => {
     const ctx = gsap.context(() => {
       // 병렬 애니메이션 타임라인
       gsap.set(wrapperRef.current, { scale: 0.5 });
-      gsap.set(nameRef.current, { bottom: "-40px", opacity: 0 });
+      gsap.set(nameRef.current, { bottom: "-10vh", opacity: 0 });
       gsap
         .timeline({
           scrollTrigger: {
@@ -69,7 +71,7 @@ const Home = () => {
             ease: "power2.out",
             transformOrigin: "top center",
           },
-          0
+          0.6
         )
         .to(
           wrapperRef.current,
@@ -79,7 +81,7 @@ const Home = () => {
             y: -50, // 아래 쪽으로 이동
             ease: "power2.out",
           },
-          0.8
+          0.2
         )
         .to(
           textRef.current,
@@ -87,13 +89,13 @@ const Home = () => {
             opacity: 0,
             ease: "power2.out",
           },
-          1
+          1.6
         )
         .to(
           nameRef.current,
           {
             duration: 4,
-            bottom: "58px",
+            bottom: "12vh",
             opacity: 1,
             ease: "power2.out",
           },
@@ -108,7 +110,10 @@ const Home = () => {
     <HomeContainer ref={containerRef}>
       <EnvelopeWrapper ref={wrapperRef}>
         <PaperBottom>
-          <Title>소중한 분들을 초대합니다</Title>
+          <TitleWrap>
+            <SubTitle>a celebration of our love</SubTitle>
+            <Title>소중한 분들을 초대합니다</Title>
+          </TitleWrap>
           <Invitation />
           <BottomText>
             <p>2025년 7월 19일 낮12시</p>
@@ -121,11 +126,14 @@ const Home = () => {
             <p>and</p>
             <h2>Onnuri</h2>
           </TextWrapper>
+          <SealingImg>
+            <img src={sealingWax} alt="sealing wax" />
+          </SealingImg>
         </PaperTop>
       </EnvelopeWrapper>
       <NameWrapper ref={nameRef}>
         <p>
-          김태한 <span className="heart">❤︎</span> 장재인 <span>의 차남</span>{" "}
+          김태한 <span className="heart">❤︎</span> 장재연 <span>의 차남</span>{" "}
           김시현
         </p>
         <p>
@@ -182,10 +190,11 @@ const PaperBottom = styled(PaperFace)`
   justify-content: space-between;
   z-index: 1;
 `;
+const TitleWrap = styled.div``;
 
 const PaperTop = styled(PaperFace)`
   top: 0;
-  height: 80vw;
+  height: 72%;
   max-height: 365px;
   transform-origin: bottom center;
   transform: rotateX(0deg); /* 접힌 상태에서 시작 */
@@ -198,6 +207,7 @@ const TextWrapper = styled.div`
   pointer-events: none;
   font-family: "WindSong", cursive;
   font-display: swap;
+  transform: translateZ(1px);
   h2 {
     font-size: 60px;
     font-weight: 100;
@@ -205,6 +215,16 @@ const TextWrapper = styled.div`
   p {
     font-size: 50px;
     font-weight: 100;
+  }
+`;
+const SealingImg = styled.div`
+  position: absolute;
+  bottom: -35px;
+  width: 70px;
+  height: 70px;
+  img {
+    display: block;
+    width: 100%;
   }
 `;
 
