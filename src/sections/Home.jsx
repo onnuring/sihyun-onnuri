@@ -158,8 +158,8 @@ const HomeContainer = styled.section`
 const EnvelopeWrapper = styled.div`
   width: 100vw;
   height: 100vw;
-  max-width: 456px;
-  max-height: 456px;
+  max-width: 480px;
+  max-height: 480px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;

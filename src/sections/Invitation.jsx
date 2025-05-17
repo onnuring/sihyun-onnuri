@@ -51,9 +51,9 @@ export default Invitation;
 
 const Wrapper = styled.div`
   font-size: 16px;
-  font-weight: 100;
   text-align: center;
   font-family: invitationFont;
+  color: #1f1f1f;
   line-height: 2.3;
 `;
 

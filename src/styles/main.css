@@ -22,6 +22,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #333;
 }
 .pin-spacer {
   overflow-x: hidden !important;

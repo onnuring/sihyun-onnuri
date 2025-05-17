@@ -97,14 +97,14 @@ export default WeddingCalendar;
 
 const CalendarWrapper = styled.section`
   width: 100vw;
-  max-width: 456px;
+  max-width: 480px;
   padding: 0 20px;
   margin: 0 auto;
   overflow: hidden;
 `;
 const StyledCalendar = styled(Calendar)`
   width: 100%;
-  max-width: 456px;
+  max-width: 480px;
   border-top: 1px solid #ae360e;
   border-bottom: 1px solid #ae360e;
   padding: 20px;
