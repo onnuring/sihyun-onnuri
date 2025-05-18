@@ -201,6 +201,7 @@ const Dday = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 
   span {
     font-weight: 700;

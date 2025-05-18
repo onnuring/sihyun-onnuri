@@ -14,6 +14,20 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: roundedFont;
+  src: url("../assets/fonts/NanumGothic-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: roundedFont;
+  src: url("../assets/fonts/NanumGothic-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --title-color: #d97d83;

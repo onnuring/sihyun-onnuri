@@ -67,7 +67,7 @@ const MapBox = styled.div`
   width: 100%;
   height: 60vw;
   max-height: 288px;
-  margin: 20px auto;
+  margin: 10px auto;
   background-color: #f2f2f2;
   border-radius: 12px;
   display: flex;

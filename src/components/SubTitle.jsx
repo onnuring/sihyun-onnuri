@@ -18,7 +18,7 @@ const StyledSubTitle = styled.p`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 
   /* &::before,
   &::after {

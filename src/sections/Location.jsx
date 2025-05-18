@@ -27,15 +27,19 @@ const Location = () => {
         <KakaoMap />
 
         <NaviLinks>
-          <a href="https://naver.me/GedKGFBh" target="_blank" rel="noreferrer">
+          <a href="https://naver.me/GEXhvXKp" target="_blank" rel="noreferrer">
             <img src={naverMap} alt="네이버지도" />
             <span>네이버지도</span>
           </a>
-          <a href="https://kko.to/hNOjymxlNa" target="_blank" rel="noreferrer">
+          <a
+            href="https://kko.kakao.com/mCgaCcxgFy"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={kakaoMap} alt="카카오맵" />
             <span>카카오맵</span>
           </a>
-          <a href="https://tmap.life/1009d349" target="_blank" rel="noreferrer">
+          <a href="https://tmap.life/06929250" target="_blank" rel="noreferrer">
             <img src={tMap} alt="티맵" />
             <span>티맵</span>
           </a>
@@ -45,15 +49,27 @@ const Location = () => {
         <li>
           <strong>셔틀</strong>
           <p>
-            3호선, 수인분당선 <br />
+            <span className="orangeColor">3호선</span>
+            <span className="yellowColor">수인분당</span>
             수서역 6번 출구 앞 셔틀운영
           </p>
+          <p className="smaller">• 예식 시간 2시간전 부터 운행됩니다</p>
         </li>
         <li>
           <strong>버스</strong>
-          <p>원인재역(1번출구) : 일반[304, 522], 급행[99]</p>
+          <p>
+            <span className="redColor">광역,직행</span>
+            [9800] [9400] [9408]
+          </p>
+          <p>시흥동 농협창고 정류장 하차, 도보 5분소요</p>
+          <p className="smaller">
+            • [9800] [9400] : 강남역, 양재역, 모란역 승하차 가능
+          </p>
+          <p className="smaller">
+            • [9408] : 고속터미널, 반포역, 논현역, 강남역, 양재역 승하차 가능
+          </p>
         </li>
-        <li>
+        {/* <li>
           <strong>주차</strong>
           <p>
             • 연수3동 공영주차장 (셔틀운영)
@@ -65,7 +81,7 @@ const Location = () => {
             • 원인재역 공영주차장
             <br />• 삼성디지털프라자 환승주차장
           </p>
-        </li>
+        </li> */}
       </InfoList>
     </Wrapper>
   );
@@ -79,68 +95,102 @@ const Wrapper = styled.section`
   max-width: 480px;
   margin: 0 auto;
   padding: 120px 20px 0;
+  font-family: basicFont;
 `;
 const TitleWrapper = styled.div`
   margin-bottom: 40px;
 `;
 const MapWrapper = styled.div`
   width: 100%;
-  padding: 30px 0;
+  padding: 10px 0;
   border-top: 1px solid #ae360e;
   border-bottom: 1px solid #ae360e;
 `;
 const AddressText = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 const CopyButton = styled.button`
   margin-left: 10px;
   padding: 4px 10px;
   font-size: 0.9rem;
-  border: 1px solid #ae360e;
+  border: 1px solid #ddd;
   background-color: #fff;
-  color: #ae360e;
   border-radius: 4px;
   cursor: pointer;
+  font-family: basicFont;
 `;
 
 const NaviLinks = styled.div`
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin: 20px 0;
-  outline: 1px solid lime;
+  gap: 15px;
 
   a {
     flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-decoration: none;
     color: #444;
-    border: 1px solid #ae360e;
+    border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 0.85rem;
+    padding: 6px 0;
 
     img {
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
     }
   }
 `;
 
 const InfoList = styled.ul`
+  width: 100%;
   text-align: left;
   font-size: 0.95rem;
-  margin-top: 30px;
+  padding: 30px 20px 0;
+  list-style: none;
   li {
-    margin-bottom: 16px;
+    margin-bottom: 40px;
     line-height: 1.6;
+    p {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      line-height: 2;
+      &.smaller {
+        line-height: 1.2;
+        padding: 5px 0 0 12px;
+        font-size: 14px;
+        text-indent: -12px;
+      }
+    }
+    span {
+      display: inline-block;
+      padding: 1px 6px;
+      font-family: roundedFont;
+      font-size: 10px;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 20px;
+    }
+    .orangeColor {
+      background-color: #ff7200;
+    }
+    .yellowColor {
+      background-color: #ffce32;
+    }
+    .redColor {
+      background-color: #ff451e;
+    }
   }
   strong {
-    font-weight: 600;
     display: block;
     margin-bottom: 4px;
-    color: #8d508d;
+    font-size: 18px;
+    color: #ae360e;
   }
 `;

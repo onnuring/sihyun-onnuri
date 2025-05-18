@@ -95,7 +95,7 @@ const Home = () => {
           nameRef.current,
           {
             duration: 4,
-            bottom: "12vh",
+            bottom: "10vh",
             opacity: 1,
             ease: "power2.out",
           },
