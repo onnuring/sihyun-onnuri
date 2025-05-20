@@ -83,7 +83,7 @@ const WeddingCalendar = () => {
           ) : null
         }
         showNavigation={false}
-        activeStartDate={new Date(2025, 6, 1)} // 7월 (Month는 0부터 시작!)
+        activeStartDate={new Date(2025, 6, 1)}
         minDetail="month"
         showNeighboringMonth={false}
         formatDay={(locale, date) => date.getDate()}
@@ -195,7 +195,7 @@ const StyledCalendar = styled(Calendar)`
 
 const Dday = styled.div`
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
   font-family: "basicFont";
   display: flex;

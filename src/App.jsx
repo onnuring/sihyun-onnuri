@@ -1,9 +1,9 @@
 import Home from "./sections/Home";
-import Gallery from "./sections/Gallery";
-import Location from "./sections/Location";
-import Account from "./sections/Account";
-import Information from "./sections/Information";
 import WeddingCalendar from "./sections/WeddingCalendar";
+import Location from "./sections/Location";
+import Gallery from "./sections/Gallery";
+import Information from "./sections/Information";
+import Account from "./sections/Account";
 
 function App() {
   return (

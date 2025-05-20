@@ -8,7 +8,7 @@ import KakaoMap from "../components/KakaoMap";
 const Location = () => {
   const handleCopy = () => {
     const address = "경기 성남시 수정구 설개로 39";
-    navigator.clipboard.writeText(address).then(() => {
+    window.navigator.clipboard.writeText(address).then(() => {
       alert("주소가 복사되었습니다.");
     });
   };

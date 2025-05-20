@@ -29,7 +29,7 @@ const Gallery = () => {
       gsap.utils.toArray(".gallery-column").forEach((col) => {
         const speed = parseFloat(col.getAttribute("data-speed") || "1");
         gsap.to(col, {
-          y: `${(1 - speed) * 800}px`,
+          y: `${(1 - speed) * 80}vh`,
           ease: "none",
           scrollTrigger: {
             trigger: galleryRef.current,
@@ -62,7 +62,7 @@ const Gallery = () => {
         <SubTitle
           className={"filter-text"}
           fontSize={"80px"}
-          fontWeight={"700"}
+          fontWeight={"900"}
         >
           gallery
         </SubTitle>
@@ -105,7 +105,6 @@ const GalleryWrapper = styled.section`
   height: 100vh;
   margin: 0 auto;
   padding: 70px 20px 0;
-  position: relative;
 `;
 const TitleWrapper = styled.div`
   margin-bottom: 50px;
@@ -120,6 +119,7 @@ const Columns = styled.div`
   display: flex;
   gap: 12px;
   justify-content: center;
+  z-index: 1;
 `;
 const Column = styled.div`
   flex: 1;
@@ -134,7 +134,7 @@ const ImageBox = styled.div`
 
   img {
     width: 100%;
-    height: auto; /* 비율 유지 */
+    height: auto;
     display: block;
   }
 `;
