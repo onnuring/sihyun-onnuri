@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SubTitle from "../components/SubTitle";
+import ImageModal from "../components/ImageModal";
 import {
   snap1,
   snap2,
@@ -19,6 +20,8 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const galleryRef = useRef(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -46,6 +49,13 @@ const Gallery = () => {
   const leftImages = [studio1, studio3, snap2, snap4, studio6];
   const rightImages = [studio2, snap1, snap3, studio4, studio5];
 
+  const allImages = [...leftImages, ...rightImages];
+
+  const handleImageClick = (index) => {
+    setCurrentIndex(index);
+    setModalOpen(true);
+  };
+
   return (
     <GalleryWrapper ref={galleryRef}>
       <TitleWrapper>
@@ -60,19 +70,29 @@ const Gallery = () => {
       <Columns>
         <Column className="gallery-column" data-speed="1.9">
           {leftImages.map((src, i) => (
-            <ImageBox key={`left-${i}`}>
+            <ImageBox key={`left-${i}`} onClick={() => handleImageClick(i)}>
               <img src={src} alt={`wedding left ${i}`} />
             </ImageBox>
           ))}
         </Column>
         <Column className="gallery-column" data-speed="2.2">
           {rightImages.map((src, i) => (
-            <ImageBox key={`right-${i}`}>
+            <ImageBox
+              key={`right-${i}`}
+              onClick={() => handleImageClick(i + leftImages.length)}
+            >
               <img src={src} alt={`wedding right ${i}`} />
             </ImageBox>
           ))}
         </Column>
       </Columns>
+      {isModalOpen && (
+        <ImageModal
+          images={allImages}
+          initialIndex={currentIndex}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </GalleryWrapper>
   );
 };
@@ -89,7 +109,7 @@ const GalleryWrapper = styled.section`
 `;
 const TitleWrapper = styled.div`
   margin-bottom: 50px;
-  z-index: 3;
+
   .filter-text {
     z-index: 3;
     mix-blend-mode: color-dodge;
