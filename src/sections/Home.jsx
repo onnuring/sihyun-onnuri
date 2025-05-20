@@ -108,7 +108,7 @@ const Home = () => {
 
   return (
     <HomeContainer ref={containerRef}>
-      <EnvelopeWrapper ref={wrapperRef}>
+      <PaperWrapper ref={wrapperRef}>
         <PaperBottom>
           <TitleWrap>
             <SubTitle>a celebration of our love</SubTitle>
@@ -130,7 +130,7 @@ const Home = () => {
             <img src={sealingWax} alt="sealing wax" />
           </SealingImg>
         </PaperTop>
-      </EnvelopeWrapper>
+      </PaperWrapper>
       <NameWrapper ref={nameRef}>
         <p>
           김태한 <span className="heart">❤︎</span> 장재연 <span>의 차남</span>{" "}
@@ -155,7 +155,7 @@ const HomeContainer = styled.section`
   position: relative;
 `;
 
-const EnvelopeWrapper = styled.div`
+const PaperWrapper = styled.div`
   width: 100vw;
   height: 100vw;
   max-width: 480px;

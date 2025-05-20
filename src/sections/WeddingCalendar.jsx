@@ -46,7 +46,7 @@ const WeddingCalendar = () => {
   return (
     <CalendarWrapper>
       {/* <SubTitle>wedding day</SubTitle> */}
-      <Title>
+      <Title textAlign={"left"}>
         낮 12시,
         <br /> 7월의 열아홉번째 날
       </Title>

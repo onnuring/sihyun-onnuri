@@ -1,17 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const SubTitle = ({ children }) => {
-  return <StyledSubTitle>{children}</StyledSubTitle>;
+const SubTitle = ({ children, fontSize, className, fontWeight }) => {
+  return (
+    <StyledSubTitle
+      className={className}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+    >
+      {children}
+    </StyledSubTitle>
+  );
 };
 
 export default SubTitle;
 
 const StyledSubTitle = styled.p`
-  font-size: 20px;
+  font-size: ${({ fontSize }) => fontSize || "20px"};
   color: #ae360e;
   font-family: "Cormorant SC", serif;
-  font-weight: 500;
+  font-weight: ${({ fontWeight }) => fontWeight || "400"};
   text-align: center;
   position: relative;
   display: flex;

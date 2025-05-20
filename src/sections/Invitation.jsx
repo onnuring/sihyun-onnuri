@@ -34,7 +34,7 @@ const Invitation = () => {
   }, []);
 
   return (
-    <Wrapper className="invitation-text">
+    <InvitationWrapper className="invitation-text">
       {message
         .trim()
         .split("\n")
@@ -43,13 +43,13 @@ const Invitation = () => {
             {line}
           </Line>
         ))}
-    </Wrapper>
+    </InvitationWrapper>
   );
 };
 
 export default Invitation;
 
-const Wrapper = styled.div`
+const InvitationWrapper = styled.div`
   font-size: 16px;
   text-align: center;
   font-family: invitationFont;

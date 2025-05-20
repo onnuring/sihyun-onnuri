@@ -13,7 +13,7 @@ const Location = () => {
     });
   };
   return (
-    <Wrapper>
+    <LocationWrapper>
       <TitleWrapper>
         <SubTitle>location</SubTitle>
         <Title>오시는 길</Title>
@@ -21,7 +21,7 @@ const Location = () => {
 
       <MapWrapper>
         <AddressText>
-          <p>경기 성남시 수정구 설개로 39</p>
+          <p>메종디탈리 | 경기 성남시 수정구 설개로 39</p>
           <CopyButton onClick={handleCopy}>복사하기</CopyButton>
         </AddressText>
         <KakaoMap />
@@ -83,18 +83,18 @@ const Location = () => {
           </p>
         </li> */}
       </InfoList>
-    </Wrapper>
+    </LocationWrapper>
   );
 };
 
 export default Location;
-const Wrapper = styled.section`
+const LocationWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 480px;
   margin: 0 auto;
-  padding: 120px 20px 0;
+  padding: 120px 20px 40px;
   font-family: basicFont;
 `;
 const TitleWrapper = styled.div`
@@ -115,7 +115,7 @@ const CopyButton = styled.button`
   margin-left: 10px;
   padding: 4px 10px;
   font-size: 0.9rem;
-  border: 1px solid #ddd;
+  border: 1px solid #e8e4e2;
   background-color: #fff;
   border-radius: 4px;
   cursor: pointer;
@@ -133,8 +133,8 @@ const NaviLinks = styled.div`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #444;
-    border: 1px solid #ddd;
+    color: #333;
+    border: 1px solid #e8e4e2;
     border-radius: 5px;
     font-size: 0.85rem;
     padding: 6px 0;
