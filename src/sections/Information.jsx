@@ -13,7 +13,7 @@ const TAB_CONTENTS = {
   예식장안내: [
     {
       emoji: "💍",
-      text: "예식은 1부와 2부 나눠서 진행됩니다. 대관시간은 오후 3시까지로 오셔서 여유롭게 시간 보내셨으면 좋겠습니다.",
+      text: "예식은 1부와 2부 나눠서 진행됩니다. \n대관시간은 오후 3시까지로 오셔서 여유롭게 시간 보내셨으면 좋겠습니다.",
     },
     {
       emoji: "👰🏻‍♀️",
@@ -109,6 +109,7 @@ export default Information;
 
 const InformationWrapper = styled.section`
   width: 100vw;
+  outline: 2px solid lime;
   max-width: 480px;
   height: 100vh;
   margin: 0 auto;

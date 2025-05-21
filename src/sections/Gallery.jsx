@@ -120,6 +120,7 @@ const Columns = styled.div`
   gap: 12px;
   justify-content: center;
   z-index: 1;
+  outline: 2px solid red;
 `;
 const Column = styled.div`
   flex: 1;
