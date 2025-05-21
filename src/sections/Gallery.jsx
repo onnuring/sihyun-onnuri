@@ -25,9 +25,15 @@ const Gallery = () => {
   const galleryRef = useRef(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const wrapper = galleryRef.current;
+
+      const maxShift = 80 * window.innerHeight * 0.01; // 예: y: 80vh 만큼 움직일 때
+      let maxSpeed = 0;
+
       // 컬럼별 패럴럭스
       gsap.utils.toArray(".gallery-column").forEach((col) => {
         const speed = parseFloat(col.getAttribute("data-speed") || "1");
+        maxSpeed = Math.max(maxSpeed, speed);
         gsap.to(col, {
           y: `${(1 - speed) * 80}vh`,
           ease: "none",
@@ -37,8 +43,30 @@ const Gallery = () => {
             end: "bottom center",
             scrub: 1.2,
             invalidateOnRefresh: true,
+            markers: true,
           },
         });
+      });
+
+      //wrapper 높이 조절
+      const shift = (1 - 1 / maxSpeed) * maxShift;
+
+      ScrollTrigger.create({
+        trigger: wrapper,
+        start: "top center",
+        end: "bottom center",
+        scrub: 1.2,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const progress = self.progress; // 0 ~ 1
+          const baseHeight = wrapper.scrollHeight; // 원래 content 높이
+          const reducedHeight = shift * progress; // 위에서 덜 올라간 만큼 보정
+
+          wrapper.style.height = `${baseHeight - reducedHeight}px`;
+          console.log("원래높이", baseHeight);
+          console.log("뺄 스크롤높이", reducedHeight);
+          console.log("쉬프트", shift);
+        },
       });
     }, galleryRef);
 
@@ -102,7 +130,6 @@ export default Gallery;
 const GalleryWrapper = styled.section`
   max-width: 480px;
   width: 100vw;
-  height: 100vh;
   margin: 0 auto;
   padding: 70px 20px 0;
 `;
@@ -120,7 +147,6 @@ const Columns = styled.div`
   gap: 12px;
   justify-content: center;
   z-index: 1;
-  outline: 2px solid red;
 `;
 const Column = styled.div`
   flex: 1;
