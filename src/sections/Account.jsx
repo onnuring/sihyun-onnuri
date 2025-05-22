@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BRIDE_ACCOUNTS, GROOM_ACCOUNTS } from "../constants/customInfo";
 import Title from "../components/Title";
 import SubTitle from "../components/SubTitle";
+import CopyButton from "../components/CopyButton";
 
 const Account = () => {
   const [openSections, setOpenSections] = useState({
@@ -17,11 +18,6 @@ const Account = () => {
     }));
   };
 
-  const handleCopy = (text) => {
-    navigator.clipboard.writeText(text);
-    alert("계좌번호가 복사되었습니다.");
-  };
-
   const renderAccounts = (data) =>
     data.map(({ name, bank, account }, i) => (
       <AccountItem key={i}>
@@ -31,7 +27,7 @@ const Account = () => {
             <AccountBank>{bank}</AccountBank>
             {account}
           </div>
-          <CopyBtn onClick={() => handleCopy(account)}>복사</CopyBtn>
+          <CopyButton text={account} />
         </AccountInfo>
       </AccountItem>
     ));
@@ -167,21 +163,4 @@ const AccountInfo = styled.div`
 
 const AccountBank = styled.span`
   margin-right: 5px;
-`;
-
-const CopyBtn = styled.button`
-  flex-shrink: 0;
-  padding: 4px 8px;
-  font-size: 12px;
-  border: 1px solid #ae360e;
-  box-sizing: border-box;
-  border-radius: 4px;
-  background-color: white;
-  color: #ae360e;
-  cursor: pointer;
-  transition: 0.2s;
-
-  &:hover {
-    background-color: #faece4;
-  }
 `;

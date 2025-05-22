@@ -4,7 +4,7 @@ import Location from "./sections/Location";
 import Gallery from "./sections/Gallery";
 import Information from "./sections/Information";
 import Account from "./sections/Account";
-import Footer from "./components/Footer";
+import Footer from "./sections/Footer";
 
 function App() {
   return (
