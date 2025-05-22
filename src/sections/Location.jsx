@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import SubTitle from "../components/SubTitle";
 import Title from "../components/Title";
-import { kakaoMap, naverMap, tMap } from "../assets/images";
 import KakaoMap from "../components/KakaoMap";
+import { NAVIGATION_LINKS, TRANSPORT_INFO } from "../constants/customInfo";
 
 const Location = () => {
   const handleCopy = () => {
@@ -27,61 +27,26 @@ const Location = () => {
         <KakaoMap />
 
         <NaviLinks>
-          <a href="https://naver.me/GEXhvXKp" target="_blank" rel="noreferrer">
-            <img src={naverMap} alt="네이버지도" />
-            <span>네이버지도</span>
-          </a>
-          <a
-            href="https://kko.kakao.com/mCgaCcxgFy"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={kakaoMap} alt="카카오맵" />
-            <span>카카오맵</span>
-          </a>
-          <a href="https://tmap.life/06929250" target="_blank" rel="noreferrer">
-            <img src={tMap} alt="티맵" />
-            <span>티맵</span>
-          </a>
+          {NAVIGATION_LINKS.map(({ name, url, icon }) => (
+            <a key={name} href={url} target="_blank" rel="noreferrer">
+              <img src={icon} alt={name} />
+              <span>{name}</span>
+            </a>
+          ))}
         </NaviLinks>
       </MapWrapper>
       <InfoList>
-        <li>
-          <strong>셔틀</strong>
-          <p>
-            <span className="orangeColor">3호선</span>
-            <span className="yellowColor">수인분당</span>
-            수서역 6번 출구 앞 셔틀운영
-          </p>
-          <p className="smaller">• 예식 시간 2시간전 부터 운행됩니다</p>
-        </li>
-        <li>
-          <strong>버스</strong>
-          <p>
-            <span className="redColor">광역,직행</span>
-            [9800] [9400] [9408]
-          </p>
-          <p>시흥동 농협창고 정류장 하차, 도보 5분소요</p>
-          <p className="smaller">
-            • [9800] [9400] : 강남역, 양재역, 모란역 승하차 가능
-          </p>
-          <p className="smaller">
-            • [9408] : 고속터미널, 반포역, 논현역, 강남역, 양재역 승하차 가능
-          </p>
-        </li>
-        {/* <li>
-          <strong>주차</strong>
-          <p>
-            • 연수3동 공영주차장 (셔틀운영)
-            <br />
-            &emsp;- 연수동 532-2
-            <br />
-            &emsp;- 이용 시 주차쿠폰 제공
-            <br />
-            • 원인재역 공영주차장
-            <br />• 삼성디지털프라자 환승주차장
-          </p>
-        </li> */}
+        {TRANSPORT_INFO.map(({ type, contents }, idx) => (
+          <li key={idx}>
+            <strong>{type}</strong>
+            {contents.map(({ text, className, smaller }, i) => (
+              <p key={i} className={smaller ? "smaller" : ""}>
+                {className && <span className={className}>{text}</span>}
+                {!className && text}
+              </p>
+            ))}
+          </li>
+        ))}
       </InfoList>
     </LocationWrapper>
   );

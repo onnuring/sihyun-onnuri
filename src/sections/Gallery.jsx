@@ -4,18 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SubTitle from "../components/SubTitle";
 import ImageModal from "../components/ImageModal";
-import {
-  snap1,
-  snap2,
-  snap3,
-  snap4,
-  studio1,
-  studio2,
-  studio3,
-  studio4,
-  studio5,
-  studio6,
-} from "../assets/images";
+import { LEFT_IMAGES, RIGHT_IMAGES } from "../constants/customInfo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,11 +14,12 @@ const Gallery = () => {
   const galleryRef = useRef(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
+      window.addEventListener("load", () => ScrollTrigger.refresh(true));
       // 컬럼별 패럴럭스
       gsap.utils.toArray(".gallery-column").forEach((col) => {
         const speed = parseFloat(col.getAttribute("data-speed") || "1");
         gsap.to(col, {
-          y: `${(1 - speed) * 80}vh`,
+          y: `${(1 - speed) * 500}px`,
           ease: "none",
           scrollTrigger: {
             trigger: galleryRef.current,
@@ -37,7 +27,6 @@ const Gallery = () => {
             end: "bottom center",
             scrub: 1.2,
             invalidateOnRefresh: true,
-            markers: true,
           },
         });
       });
@@ -47,10 +36,8 @@ const Gallery = () => {
   }, []);
 
   // 2개의 컬럼으로 나누기
-  const leftImages = [studio1, studio3, snap2, snap4, studio6];
-  const rightImages = [studio2, snap1, snap3, studio4, studio5];
 
-  const allImages = [...leftImages, ...rightImages];
+  const allImages = [...LEFT_IMAGES, ...RIGHT_IMAGES];
 
   const handleImageClick = (index) => {
     setCurrentIndex(index);
@@ -70,17 +57,17 @@ const Gallery = () => {
       </TitleWrapper>
       <Columns>
         <Column className="gallery-column" data-speed="1.9">
-          {leftImages.map((src, i) => (
+          {LEFT_IMAGES.map((src, i) => (
             <ImageBox key={`left-${i}`} onClick={() => handleImageClick(i)}>
               <img src={src} alt={`wedding left ${i}`} />
             </ImageBox>
           ))}
         </Column>
         <Column className="gallery-column" data-speed="2.2">
-          {rightImages.map((src, i) => (
+          {RIGHT_IMAGES.map((src, i) => (
             <ImageBox
               key={`right-${i}`}
-              onClick={() => handleImageClick(i + leftImages.length)}
+              onClick={() => handleImageClick(i + LEFT_IMAGES.length)}
             >
               <img src={src} alt={`wedding right ${i}`} />
             </ImageBox>
@@ -103,7 +90,7 @@ export default Gallery;
 const GalleryWrapper = styled.section`
   max-width: 480px;
   width: 100vw;
-  height: 100dvh;
+  height: 150vh;
   margin: 0 auto;
   padding: 70px 20px 0;
 `;

@@ -3,9 +3,8 @@ import Calendar from "react-calendar";
 import styled from "styled-components";
 import Title from "../components/Title";
 import { heart } from "../assets/images";
-// import SubTitle from "../components/SubTitle";
+import { WEDDING_DATE } from "../constants/customInfo";
 
-const WEDDING_DATE = new Date("2025-07-19");
 const WeddingCalendar = () => {
   const [ddayMessage, setDdayMessage] = useState("");
 
@@ -45,7 +44,6 @@ const WeddingCalendar = () => {
 
   return (
     <CalendarWrapper>
-      {/* <SubTitle>wedding day</SubTitle> */}
       <Title textAlign={"left"}>
         낮 12시,
         <br /> 7월의 열아홉번째 날
@@ -127,7 +125,7 @@ const StyledCalendar = styled(Calendar)`
     transition: all 0.2s ease-in-out;
     background: none;
     border: none;
-    color: #000;
+    color: #333;
 
     -webkit-tap-highlight-color: transparent;
     &:focus,
