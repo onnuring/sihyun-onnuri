@@ -26,7 +26,7 @@ const Information = () => {
   return (
     <InformationWrapper>
       <SubTitle>information</SubTitle>
-      <Title>안내 말씀 드립니다</Title>
+      <Title>안내 사항</Title>
       <TabContainer>
         <TabMenu>
           {TAB_INFO_MENUS.map(({ label, key }) => (

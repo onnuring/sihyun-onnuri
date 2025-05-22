@@ -161,13 +161,13 @@ export const RIGHT_IMAGES = [studio2, snap1, snap3, studio4, studio5];
 
 //account
 export const GROOM_ACCOUNTS = [
-  { name: "김시현", bank: "우리", account: "123-4567-8901-23" },
-  { name: "홍아버지", bank: "농협", account: "456-7890-1234-56" },
-  { name: "홍어머니", bank: "신한", account: "789-0123-4567-89" },
+  { name: "김시현", bank: "국민", account: "937702-00-139066" },
+  { name: "김태한", bank: "농협", account: "456-7890-1234-56" },
+  { name: "장재연", bank: "국민", account: "789-0123-4567-89" },
 ];
 
 export const BRIDE_ACCOUNTS = [
   { name: "김온누리", bank: "국민", account: "067502-04-183524" },
   { name: "김진호", bank: "신한", account: "567-8901-2345-67" },
-  { name: "김어머니", bank: "국민", account: "890-1234-5678-90" },
+  { name: "이가인", bank: "국민", account: "067502-04-131215" },
 ];

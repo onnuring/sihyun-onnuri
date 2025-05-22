@@ -4,6 +4,7 @@ import Location from "./sections/Location";
 import Gallery from "./sections/Gallery";
 import Information from "./sections/Information";
 import Account from "./sections/Account";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Gallery />
       <Information />
       <Account />
+      <Footer />
     </>
   );
 }
