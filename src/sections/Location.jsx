@@ -33,13 +33,31 @@ const Location = () => {
       <InfoList>
         {TRANSPORT_INFO.map(({ type, contents }, idx) => (
           <li key={idx}>
-            <strong>{type}</strong>
-            {contents.map(({ text, className, smaller }, i) => (
-              <p key={i} className={smaller ? "smaller" : ""}>
-                {className && <span className={className}>{text}</span>}
-                {!className && text}
-              </p>
-            ))}
+            <TitleText>{type}</TitleText>
+            <ContentTextBox>
+              {contents.map((item, idx) => {
+                if (item.tag || item.subscribe) {
+                  return (
+                    <>
+                      {item.tag && (
+                        <span key={idx} className={item.className}>
+                          {item.tag}
+                        </span>
+                      )}
+                      {item.subscribe && <span>{item.subscribe}</span>}
+                    </>
+                  );
+                } else if (item.text) {
+                  return (
+                    <p key={idx} className={item.smaller ? "smaller" : ""}>
+                      {item.text}
+                    </p>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </ContentTextBox>
           </li>
         ))}
       </InfoList>
@@ -117,8 +135,16 @@ const InfoList = styled.ul`
         font-size: 14px;
         text-indent: -12px;
       }
+      &.inlineP {
+        display: inline-block;
+      }
     }
     span {
+      display: inline-block;
+      line-height: 2;
+      vertical-align: middle;
+    }
+    .tag {
       display: inline-block;
       padding: 1px 6px;
       font-family: roundedFont;
@@ -126,6 +152,7 @@ const InfoList = styled.ul`
       font-weight: bold;
       color: #fff;
       border-radius: 20px;
+      margin-right: 5px;
     }
     .orangeColor {
       background-color: #ff7200;
@@ -137,10 +164,10 @@ const InfoList = styled.ul`
       background-color: #ff451e;
     }
   }
-  strong {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 18px;
-    color: #ae360e;
-  }
 `;
+const TitleText = styled.h3`
+  margin-bottom: 4px;
+  font-size: 18px;
+  color: #ae360e;
+`;
+const ContentTextBox = styled.div``;

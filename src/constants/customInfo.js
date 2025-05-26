@@ -60,15 +60,15 @@ export const TRANSPORT_INFO = [
     type: "셔틀",
     contents: [
       {
-        text: "3호선",
-        className: "orangeColor",
+        tag: "3호선",
+        className: "orangeColor tag",
       },
       {
-        text: "수인분당",
-        className: "yellowColor",
+        tag: "수인분당",
+        className: "yellowColor tag",
       },
       {
-        text: "수서역 6번 출구 앞 셔틀운영",
+        subscribe: "수서역 6번 출구 앞 셔틀운영",
       },
       {
         text: "• 예식 시간 2시간전 부터 운행됩니다",
@@ -80,11 +80,11 @@ export const TRANSPORT_INFO = [
     type: "버스",
     contents: [
       {
-        text: "광역,직행",
-        className: "redColor",
+        tag: "광역,직행",
+        className: "redColor tag",
       },
       {
-        text: "[9800] [9400] [9408]",
+        subscribe: "[9800] [9400] [9408]",
       },
       {
         text: "시흥동 농협창고 정류장 하차, 도보 5분소요",
