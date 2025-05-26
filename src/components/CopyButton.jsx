@@ -22,6 +22,7 @@ const StyledButton = styled.button`
   padding: 4px 8px;
   font-family: roundedFont;
   font-size: 12px;
+  font-weight: 400;
   border: 1px solid #ae360e;
   box-sizing: border-box;
   border-radius: 4px;

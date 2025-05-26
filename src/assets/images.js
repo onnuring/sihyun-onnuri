@@ -1,3 +1,5 @@
+// home
+export { default as paperBackground } from "./paper_background2.jpg";
 export { default as sealingWax } from "./sealingwax.png";
 export { default as heart } from "./heartdrawing.png";
 export { default as tMap } from "./tmap.png";

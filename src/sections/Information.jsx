@@ -10,18 +10,32 @@ const Information = () => {
     left: 0,
     width: 0,
   });
+  const [heights, setHeights] = useState({});
   const tabRefs = useRef({});
+  const contentRefs = useRef({});
+
   useLayoutEffect(() => {
-    const tabKey = activeTab;
-    const tabElement = tabRefs.current[tabKey];
-    if (tabElement) {
-      const rect = tabElement.getBoundingClientRect();
-      const containerRect = tabElement.parentNode.getBoundingClientRect();
-      setUnderlineStyle({
-        left: rect.left - containerRect.left,
-        width: rect.width,
+    requestAnimationFrame(() => {
+      const tabElement = tabRefs.current[activeTab];
+
+      if (tabElement && tabElement.parentNode) {
+        const rect = tabElement.getBoundingClientRect();
+        const parentRect = tabElement.parentNode.getBoundingClientRect();
+        setUnderlineStyle({
+          left: rect.left - parentRect.left,
+          width: rect.width,
+        });
+      }
+
+      const newHeights = {};
+      Object.keys(TAB_INFO_CONTENTS).forEach((key) => {
+        const el = contentRefs.current[key];
+        if (el) {
+          newHeights[key] = el.scrollHeight;
+        }
       });
-    }
+      setHeights(newHeights);
+    });
   }, [activeTab]);
   return (
     <InformationWrapper>
@@ -41,14 +55,21 @@ const Information = () => {
           ))}
           <TabUnderline style={underlineStyle} />
         </TabMenu>
-        <TabContent key={activeTab}>
-          {TAB_INFO_CONTENTS[activeTab].map((item, i) => (
-            <Paragraph key={i}>
-              <Emoji>{item.emoji}</Emoji>
-              {item.text}
-            </Paragraph>
-          ))}
-        </TabContent>
+        {TAB_INFO_MENUS.map(({ key }) => (
+          <TabContent
+            key={key}
+            ref={(el) => (contentRefs.current[key] = el)}
+            $isActive={activeTab === key}
+            $maxHeight={heights[key] || 0}
+          >
+            {TAB_INFO_CONTENTS[key].map((item, i) => (
+              <Paragraph key={i}>
+                <Emoji>{item.emoji}</Emoji>
+                {item.text}
+              </Paragraph>
+            ))}
+          </TabContent>
+        ))}
       </TabContainer>
     </InformationWrapper>
   );
@@ -59,7 +80,6 @@ export default Information;
 const InformationWrapper = styled.section`
   width: 100vw;
   max-width: 480px;
-  height: 100vh;
   margin: 0 auto;
   padding: 40px 20px;
 `;
@@ -73,7 +93,7 @@ const TabMenu = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
-  border-bottom: 1px solid #e8e4e2;
+  border-bottom: 1px solid #f0eae7;
 `;
 
 const TabButton = styled.button`
@@ -108,8 +128,14 @@ const TabContent = styled.div`
   font-family: basicFont;
   color: #333;
   padding: 0 10px;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards ease-in;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: ${({ $isActive, $maxHeight }) =>
+    $isActive ? `${$maxHeight}px` : "0px"};
+  opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};
+  transition-property: max-height, opacity;
+  transition-duration: 0.5s;
+  /* animation: fadeIn 0.5s forwards ease-in; */
 
   @keyframes fadeIn {
     to {

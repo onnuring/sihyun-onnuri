@@ -9,4 +9,5 @@ export default Footer;
 
 const FooterWrapper = styled.footer`
   height: 100vh;
+  background-color: black;
 `;

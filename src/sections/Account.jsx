@@ -96,7 +96,7 @@ const Accordion = styled.div`
   gap: 14px;
 `;
 const AccordionWrapper = styled.div`
-  border: 1px solid #f0e0d6;
+  border: 1px solid #f0eae7;
   border-radius: 8px;
   overflow: hidden;
 `;

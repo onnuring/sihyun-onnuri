@@ -4,14 +4,9 @@ import SubTitle from "../components/SubTitle";
 import Title from "../components/Title";
 import KakaoMap from "../components/KakaoMap";
 import { NAVIGATION_LINKS, TRANSPORT_INFO } from "../constants/customInfo";
+import CopyButton from "../components/CopyButton";
 
 const Location = () => {
-  const handleCopy = () => {
-    const address = "경기 성남시 수정구 설개로 39";
-    window.navigator.clipboard.writeText(address).then(() => {
-      alert("주소가 복사되었습니다.");
-    });
-  };
   return (
     <LocationWrapper>
       <TitleWrapper>
@@ -21,8 +16,8 @@ const Location = () => {
 
       <MapWrapper>
         <AddressText>
-          <p>메종디탈리 | 경기 성남시 수정구 설개로 39</p>
-          <CopyButton onClick={handleCopy}>복사하기</CopyButton>
+          <span>메종디탈리 | 경기 성남시 수정구 설개로 39</span>
+          <CopyButton text={"경기 성남시 수정구 설개로 39"} />
         </AddressText>
         <KakaoMap />
 
@@ -68,23 +63,13 @@ const TitleWrapper = styled.div`
 const MapWrapper = styled.div`
   width: 100%;
   padding: 10px 0;
-  border-top: 1px solid #ae360e;
-  border-bottom: 1px solid #ae360e;
+  border-top: 1px solid #f0eae7;
+  border-bottom: 1px solid #f0eae7;
 `;
 const AddressText = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-const CopyButton = styled.button`
-  margin-left: 10px;
-  padding: 4px 10px;
-  font-size: 0.9rem;
-  border: 1px solid #e8e4e2;
-  background-color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: basicFont;
 `;
 
 const NaviLinks = styled.div`
@@ -99,7 +84,7 @@ const NaviLinks = styled.div`
     align-items: center;
     text-decoration: none;
     color: #333;
-    border: 1px solid #e8e4e2;
+    border: 1px solid #f0eae7;
     border-radius: 5px;
     font-size: 0.85rem;
     padding: 6px 0;
