@@ -7,17 +7,17 @@ import { TAB_INFO_CONTENTS, TAB_INFO_MENUS } from "../constants/customInfo";
 const Information = () => {
   const [activeTab, setActiveTab] = useState("예식장안내");
   const [underlineStyle, setUnderlineStyle] = useState({
-    left: 0,
-    width: 0,
+    left: 20,
+    width: 98,
   });
   const [heights, setHeights] = useState({});
   const tabRefs = useRef({});
   const contentRefs = useRef({});
 
   useLayoutEffect(() => {
-    requestAnimationFrame(() => {
+    const timer = setTimeout(() => {
       const tabElement = tabRefs.current[activeTab];
-
+      console.log("///////////////", tabElement.getBoundingClientRect());
       if (tabElement && tabElement.parentNode) {
         const rect = tabElement.getBoundingClientRect();
         const parentRect = tabElement.parentNode.getBoundingClientRect();
@@ -35,7 +35,9 @@ const Information = () => {
         }
       });
       setHeights(newHeights);
-    });
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [activeTab]);
   return (
     <InformationWrapper>
@@ -53,14 +55,17 @@ const Information = () => {
               {label}
             </TabButton>
           ))}
-          <TabUnderline style={underlineStyle} />
+          <TabUnderline
+            $left={underlineStyle.left ?? 20}
+            $width={underlineStyle.width ?? 98}
+          />
         </TabMenu>
         {TAB_INFO_MENUS.map(({ key }) => (
           <TabContent
             key={key}
             ref={(el) => (contentRefs.current[key] = el)}
             $isActive={activeTab === key}
-            $maxHeight={heights[key] || 0}
+            $maxHeight={heights[key] || 300}
           >
             {TAB_INFO_CONTENTS[key].map((item, i) => (
               <Paragraph key={i}>
@@ -118,8 +123,8 @@ const TabUnderline = styled.div`
   height: 1px;
   background-color: #ae360e;
   transition: all 0.3s ease;
-  left: ${({ style }) => style?.left || 0}px;
-  width: ${({ style }) => style?.width || 0}px;
+  left: ${({ $left }) => $left}px;
+  width: ${({ $width }) => $width}px;
 `;
 
 const TabContent = styled.div`

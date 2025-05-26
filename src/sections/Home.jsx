@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { paperBg } from "../styles/paperBg";
+import { paperBackground } from "../assets/images";
 import Invitation from "./Invitation";
 import Title from "../components/Title";
 import SubTitle from "../components/SubTitle";
@@ -167,7 +167,8 @@ const PaperWrapper = styled.div`
 `;
 
 const PaperFace = styled.div`
-  ${paperBg};
+  background-image: url(${paperBackground});
+  background-size: contain;
   width: 100%;
   height: 100%;
   display: flex;
