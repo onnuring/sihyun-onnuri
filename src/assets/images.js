@@ -1,5 +1,5 @@
 // home
-export { default as paperBackground } from "./paper_background2.jpg";
+export { default as paperBackground } from "./paper_background.jpg";
 export { default as sealingWax } from "./sealingwax.png";
 export { default as heart } from "./heartdrawing.png";
 export { default as tMap } from "./tmap.png";
@@ -18,3 +18,9 @@ export { default as snap1 } from "./gallery/snap1-1.jpg";
 export { default as snap2 } from "./gallery/snap1-2.jpg";
 export { default as snap3 } from "./gallery/snap1-3.jpg";
 export { default as snap4 } from "./gallery/snap1-4.jpg";
+
+//footer
+export { default as layer1 } from "./layer_1.png";
+export { default as layer2 } from "./layer_2.png";
+export { default as layer3 } from "./layer_3.png";
+export { default as layer4 } from "./layer_4.png";

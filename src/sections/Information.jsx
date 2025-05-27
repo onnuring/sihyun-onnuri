@@ -17,7 +17,6 @@ const Information = () => {
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       const tabElement = tabRefs.current[activeTab];
-      console.log("///////////////", tabElement.getBoundingClientRect());
       if (tabElement && tabElement.parentNode) {
         const rect = tabElement.getBoundingClientRect();
         const parentRect = tabElement.parentNode.getBoundingClientRect();
