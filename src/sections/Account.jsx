@@ -27,7 +27,7 @@ const Account = () => {
             <AccountBank>{bank}</AccountBank>
             {account}
           </div>
-          <CopyButton text={account} />
+          <CopyButton copyText={account} obj={"계좌번호가"} />
         </AccountInfo>
       </AccountItem>
     ));

@@ -3,11 +3,17 @@ import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { layer1, layer2, layer3, layer4 } from "../assets/images";
+import KakaoShareButton from "../components/KakaoShareButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const footerRef = useRef(null);
+  const handleCopy = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    alert("링크가 복사되었습니다!");
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -60,7 +66,13 @@ const Footer = () => {
         className="parallax-layer layer4"
         data-depth="0.9"
         style={{ backgroundImage: `url(${layer4})` }}
-      />
+      >
+        <ButtonOverlay>
+          <KakaoShareButton />
+          <ShareButton onClick={handleCopy}>링크 복사</ShareButton>
+        </ButtonOverlay>
+        <CopyRight>copyright © onnuri. All rights reserved.</CopyRight>
+      </ParallaxLayer>
     </FooterWrapper>
   );
 };
@@ -96,4 +108,38 @@ const ParallaxLayer = styled.div`
   &.layer4 {
     bottom: -400px;
   }
+`;
+const ButtonOverlay = styled.div`
+  position: absolute;
+  bottom: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+`;
+
+const ShareButton = styled.button`
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  color: #333;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: basicFont;
+  transition: background 0.3s;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+`;
+const CopyRight = styled.p`
+  position: absolute;
+  bottom: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: roundedFont;
+  font-size: 12px;
+  color: #333;
 `;

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-const CopyButton = ({ text }) => {
+const CopyButton = ({ copyText, obj }) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(text);
-    alert("복사되었습니다.");
+    navigator.clipboard.writeText(copyText);
+    alert(`${obj} 복사되었습니다.`);
   };
   return (
     <StyledButton onClick={handleCopy}>

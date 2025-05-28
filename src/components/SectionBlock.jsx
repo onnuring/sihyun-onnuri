@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useInView } from "react-intersection-observer";
+import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 
 const SectionBlock = ({ text }) => {

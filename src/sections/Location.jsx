@@ -17,7 +17,10 @@ const Location = () => {
       <MapWrapper>
         <AddressText>
           <span>메종디탈리 | 경기 성남시 수정구 설개로 39</span>
-          <CopyButton text={"경기 성남시 수정구 설개로 39"} />
+          <CopyButton
+            copyText={"경기 성남시 수정구 설개로 39"}
+            obj={"주소가"}
+          />
         </AddressText>
         <KakaoMap />
 
