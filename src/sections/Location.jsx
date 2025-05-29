@@ -41,14 +41,12 @@ const Location = () => {
               {contents.map((item, idx) => {
                 if (item.tag || item.subscribe) {
                   return (
-                    <>
+                    <React.Fragment key={idx}>
                       {item.tag && (
-                        <span key={idx} className={item.className}>
-                          {item.tag}
-                        </span>
+                        <span className={item.className}>{item.tag}</span>
                       )}
                       {item.subscribe && <span>{item.subscribe}</span>}
-                    </>
+                    </React.Fragment>
                   );
                 } else if (item.text) {
                   return (
