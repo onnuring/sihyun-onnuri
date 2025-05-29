@@ -133,12 +133,12 @@ const Home = () => {
       </PaperWrapper>
       <NameWrapper ref={nameRef}>
         <p>
-          김태한 <span className="heart">❤︎</span> 장재연 <span>의 차남</span>{" "}
-          김시현
+          김태한 <span className="heart">♥</span> 장재연 <span>의 차남</span>{" "}
+          시현
         </p>
         <p>
-          김진호 <span className="heart">❤︎</span> 이가인 <span>의 차녀</span>{" "}
-          김온누리
+          김진호 <span className="heart">♥</span> 이가인 <span>의 차녀</span>{" "}
+          온누리
         </p>
       </NameWrapper>
     </HomeContainer>
