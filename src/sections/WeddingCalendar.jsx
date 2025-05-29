@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "react-calendar";
 import styled from "styled-components";
+import { differenceInCalendarDays, isSameDay } from "date-fns";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
 import Title from "../components/Title";
 import { heart } from "../assets/images";
 import { WEDDING_DATE } from "../constants/customInfo";
@@ -11,16 +13,16 @@ const WeddingCalendar = () => {
 
   useEffect(() => {
     const today = new Date();
-    const diffTime = WEDDING_DATE - today;
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const diffDays = differenceInCalendarDays(WEDDING_DATE, today);
+
     const Heart = (
       <img
         src={heart}
         alt="heart icon"
         style={{
-          width: "1.5rem",
+          width: "1.2rem",
           display: "inline-block",
-          textAlign: "center",
+          margin: "0 4px",
         }}
       />
     );
@@ -36,56 +38,39 @@ const WeddingCalendar = () => {
     } else {
       setDdayMessage(
         <>
-          시현{Heart}누리의 결혼식이 <span>{Math.abs(diffDays)}일</span>
+          시현{Heart}누리의 결혼식이 <span>{Math.abs(diffDays)}일</span>{" "}
           지났습니다.
         </>
       );
     }
   }, []);
 
+  const modifiers = {
+    wedding: (date) => isSameDay(date, WEDDING_DATE),
+    sunday: (date) => date.getDay() === 0,
+  };
+
+  const modifiersClassNames = {
+    wedding: "highlight",
+    sunday: "sunday",
+  };
+
   return (
     <CalendarWrapper>
-      <Title textAlign={"left"}>
+      <Title textAlign="left">
         낮 12시,
         <br /> 7월의 열아홉번째 날
       </Title>
-      <StyledCalendar
-        value={WEDDING_DATE}
-        calendarType="US"
-        tileClassName={({ date }) => {
-          const isWeddingDate =
-            date.toDateString() === WEDDING_DATE.toDateString();
-          const isSunday = date.getDay() === 0;
-
-          if (isWeddingDate) return "highlight";
-          if (isSunday) return "sunday";
-          return null;
-        }}
-        tileContent={({ date }) =>
-          date.toDateString() === WEDDING_DATE.toDateString() ? (
-            <div
-              onClick={(e) => {
-                const parent = e.currentTarget.closest(".react-calendar__tile");
-                if (parent) {
-                  parent.classList.remove("animate-heart"); // reset
-                  void parent.offsetWidth; // reflow
-                  parent.classList.add("animate-heart");
-                }
-              }}
-              style={{
-                position: "absolute",
-                inset: 0,
-                zIndex: 5,
-                cursor: "pointer",
-              }}
-            />
-          ) : null
-        }
-        showNavigation={false}
-        activeStartDate={new Date(2025, 6, 1)}
-        minDetail="month"
-        showNeighboringMonth={false}
-        formatDay={(locale, date) => date.getDate()}
+      <StyledDayPicker
+        mode="single"
+        selected={undefined}
+        defaultMonth={new Date(2025, 6)} // 7월
+        fromMonth={new Date(2025, 6)}
+        toMonth={new Date(2025, 6)}
+        showOutsideDays={false}
+        captionLayout="none" // 헤더 제거
+        modifiers={modifiers}
+        modifiersClassNames={modifiersClassNames}
       />
       <Dday>{ddayMessage}</Dday>
     </CalendarWrapper>
@@ -99,79 +84,56 @@ const CalendarWrapper = styled.section`
   max-width: 480px;
   padding: 70px 20px;
   margin: 0 auto;
-  overflow: hidden;
 `;
-const StyledCalendar = styled(Calendar)`
+
+const StyledDayPicker = styled(DayPicker)`
+  //rdp-root
   width: 100%;
-  max-width: 480px;
   border-top: 1px solid #ae360e;
   border-bottom: 1px solid #ae360e;
-  padding: 20px;
-  font-family: basicFont;
+  padding: 10px 0;
   margin-top: 20px;
+  font-family: monospace;
+  --rdp-day_button-width: 100%;
+  --rdp-selected-border: none;
 
-  .react-calendar__month-view__weekdays {
-    text-align: center;
-    font-weight: 500;
-    color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+  .rdp-month_grid {
+    width: 100%;
+    table-layout: fixed; /* 셀 폭 균등 분배 */
   }
-
-  .react-calendar__tile {
-    height: 48px;
-    font-size: 0.95rem;
-    font-weight: 400;
-    border-radius: 8px;
-    transition: all 0.2s ease-in-out;
-    background: none;
-    border: none;
-    color: #333;
-
-    -webkit-tap-highlight-color: transparent;
-    &:focus,
-    &:focus-visible,
-    &:active {
-      background-color: transparent !important;
-      color: inherit;
-      outline: none;
-      box-shadow: none;
-    }
+  .rdp-selected {
+    font-size: unset;
+    font-weight: unset;
   }
-
-  .react-calendar__tile--active,
-  .react-calendar__tile--now {
-    color: #fff;
-    font-weight: bold;
-  }
-  .react-calendar__month-view__weekdays__weekday:first-child abbr {
+  .rdp-weekday:first-child {
     color: #ae360e;
   }
-  .sunday abbr {
-    color: #ae360e !important;
+  .rdp-day {
+    pointer-events: none;
   }
 
   .highlight {
     background-image: url(${heart});
-    background-size: cover;
+    background-size: 70%;
+    background-repeat: no-repeat;
     background-position: center;
-    position: relative;
     color: white;
+    pointer-events: unset;
     font-weight: 600;
     transition: transform 0.3s ease;
+    pointer-events: auto;
   }
-  .highlight.animate-heart {
-    animation: ${heartbeat} 0.6s ease-in-out;
+  .rdp-selected {
+    animation: ${heartbeat} 0.6s infinite;
   }
-
-  .highlight abbr {
-    z-index: 2;
-    position: relative;
-    color: white;
+  .sunday {
+    color: #ae360e;
   }
 
-  abbr {
-    text-decoration: none;
+  .rdp-caption,
+  .rdp-nav,
+  .rdp-month_caption {
+    display: none; /* 헤더 숨김 */
   }
 `;
 
