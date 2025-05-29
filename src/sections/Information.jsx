@@ -85,7 +85,7 @@ const InformationWrapper = styled.section`
   width: 100vw;
   max-width: 480px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 70px 20px;
 `;
 const TabContainer = styled.div`
   margin-top: 40px;

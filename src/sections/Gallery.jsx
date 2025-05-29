@@ -92,7 +92,8 @@ const GalleryWrapper = styled.section`
   width: 100vw;
   height: 150vh;
   margin: 0 auto;
-  padding: 70px 20px 0;
+  padding: 70px 20px;
+  overflow: hidden;
 `;
 const TitleWrapper = styled.div`
   margin-bottom: 50px;

@@ -167,7 +167,7 @@ export const GROOM_ACCOUNTS = [
 ];
 
 export const BRIDE_ACCOUNTS = [
-  { name: "김온누리", bank: "국민", account: "067502-04-183524" },
-  { name: "김진호", bank: "신한", account: "567-8901-2345-67" },
+  { name: "김온누리", bank: "신한", account: "110-337-008187" },
+  { name: "김진호", bank: "우리", account: "1002-060-013283" },
   { name: "이가인", bank: "국민", account: "067502-04-131215" },
 ];

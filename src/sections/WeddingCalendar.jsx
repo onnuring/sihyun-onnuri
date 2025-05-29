@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Title from "../components/Title";
 import { heart } from "../assets/images";
 import { WEDDING_DATE } from "../constants/customInfo";
+import { heartbeat } from "../components/Loading";
 
 const WeddingCalendar = () => {
   const [ddayMessage, setDdayMessage] = useState("");
@@ -96,7 +97,7 @@ export default WeddingCalendar;
 const CalendarWrapper = styled.section`
   width: 100vw;
   max-width: 480px;
-  padding: 0 20px;
+  padding: 70px 20px;
   margin: 0 auto;
   overflow: hidden;
 `;
@@ -146,7 +147,7 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__month-view__weekdays__weekday:first-child abbr {
     color: #ae360e;
   }
-  .sunday {
+  .sunday abbr {
     color: #ae360e !important;
   }
 
@@ -160,24 +161,7 @@ const StyledCalendar = styled(Calendar)`
     transition: transform 0.3s ease;
   }
   .highlight.animate-heart {
-    animation: heartbeat 0.6s ease-in-out;
-  }
-  @keyframes heartbeat {
-    0% {
-      transform: scale(1);
-    }
-    25% {
-      transform: scale(1.2);
-    }
-    50% {
-      transform: scale(0.9);
-    }
-    75% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
+    animation: ${heartbeat} 0.6s ease-in-out;
   }
 
   .highlight abbr {

@@ -79,7 +79,7 @@ export default Account;
 const AccountWrapper = styled.section`
   max-width: 480px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 70px 20px;
   font-family: basicFont;
 `;
 const TitleWrapper = styled.div`

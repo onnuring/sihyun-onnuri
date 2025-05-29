@@ -10,8 +10,8 @@ const Invitation = () => {
     gsap.from(lineRefs.current, {
       opacity: 0,
       y: 20,
-      stagger: 1.0,
-      duration: 3.5,
+      stagger: 0.8,
+      duration: 1.5,
       ease: "power2.out",
     });
   }, []);

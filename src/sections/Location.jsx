@@ -75,7 +75,7 @@ const LocationWrapper = styled.section`
   align-items: center;
   max-width: 480px;
   margin: 0 auto;
-  padding: 120px 20px 40px;
+  padding: 70px 20px;
   font-family: basicFont;
 `;
 const TitleWrapper = styled.div`

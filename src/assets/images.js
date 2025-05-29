@@ -21,6 +21,6 @@ export { default as snap4 } from "./gallery/snap1-4.jpg";
 
 //footer
 export { default as layer1 } from "./layer_1.png";
-export { default as layer2 } from "./layer_2.png";
-export { default as layer3 } from "./layer_3.png";
+export { default as layer2 } from "./layer2.png";
+export { default as layer3 } from "./layer3.png";
 export { default as layer4 } from "./layer_4.png";

@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { layer1, layer2, layer3, layer4 } from "../assets/images";
 import KakaoShareButton from "../components/KakaoShareButton";
+import Title from "../components/Title";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,9 +31,9 @@ const Footer = () => {
             ease: "none",
             scrollTrigger: {
               trigger: footerRef.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
+              start: "center bottom",
+              end: "center center",
+              scrub: 0.5,
             },
           });
         });
@@ -45,8 +46,22 @@ const Footer = () => {
     };
   }, []);
 
+  const [daysTogether, setDaysTogether] = useState(0);
+
+  useEffect(() => {
+    const startDate = new Date("2018-07-07");
+    const today = new Date();
+
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    setDaysTogether(diffDays);
+  }, []);
+
   return (
     <FooterWrapper ref={footerRef}>
+      <Title>함께한 시간</Title>
+      <TimeText>"{daysTogether}"일</TimeText>
       <ParallaxLayer
         className="parallax-layer layer1"
         data-depth="0.1"
@@ -54,7 +69,7 @@ const Footer = () => {
       />
       <ParallaxLayer
         className="parallax-layer layer2"
-        data-depth="0.3"
+        data-depth="0.2"
         style={{ backgroundImage: `url(${layer2})` }}
       />
       <ParallaxLayer
@@ -64,7 +79,7 @@ const Footer = () => {
       />
       <ParallaxLayer
         className="parallax-layer layer4"
-        data-depth="0.9"
+        data-depth="-0.2"
         style={{ backgroundImage: `url(${layer4})` }}
       >
         <ButtonOverlay>
@@ -84,7 +99,13 @@ const FooterWrapper = styled.footer`
   height: 800px;
   max-width: 480px;
   margin: 0 auto;
+  padding-top: 50px;
   overflow: hidden;
+`;
+const TimeText = styled.p`
+  padding-top: 20px;
+  text-align: center;
+  font-family: basicFont;
 `;
 
 const ParallaxLayer = styled.div`
@@ -100,18 +121,18 @@ const ParallaxLayer = styled.div`
     bottom: 100px;
   }
   &.layer2 {
-    bottom: -50px;
+    bottom: -180px;
   }
   &.layer3 {
-    bottom: -150px;
+    bottom: -400px;
   }
   &.layer4 {
-    bottom: -400px;
+    bottom: -30px;
   }
 `;
 const ButtonOverlay = styled.div`
   position: absolute;
-  bottom: 200px;
+  bottom: 250px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -135,7 +156,7 @@ const ShareButton = styled.button`
 `;
 const CopyRight = styled.p`
   position: absolute;
-  bottom: 150px;
+  bottom: 220px;
   width: 100%;
   display: flex;
   justify-content: center;
