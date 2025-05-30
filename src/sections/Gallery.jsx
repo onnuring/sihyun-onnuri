@@ -13,6 +13,19 @@ const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const galleryRef = useRef(null);
   useEffect(() => {
+    if (isModalOpen) {
+      // 스크롤 막기
+      document.body.style.overflow = "hidden";
+    } else {
+      // 스크롤 다시 허용
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
+  useEffect(() => {
     const ctx = gsap.context(() => {
       window.addEventListener("load", () => ScrollTrigger.refresh(true));
       // 컬럼별 패럴럭스
@@ -25,7 +38,7 @@ const Gallery = () => {
             trigger: galleryRef.current,
             start: "top center",
             end: "bottom center",
-            scrub: 1.2,
+            scrub: 0.7,
             invalidateOnRefresh: true,
           },
         });
@@ -90,7 +103,7 @@ export default Gallery;
 const GalleryWrapper = styled.section`
   max-width: 480px;
   width: 100vw;
-  height: 300vh;
+  height: 2200px;
   margin: 0 auto;
   padding: 70px 20px;
   overflow: hidden;

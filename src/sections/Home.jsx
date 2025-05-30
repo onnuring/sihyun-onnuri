@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -7,6 +7,7 @@ import Invitation from "./Invitation";
 import Title from "../components/Title";
 import SubTitle from "../components/SubTitle";
 import { sealingWax } from "../assets/images";
+import ScrollHint from "../components/ScrollHint";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,16 @@ const Home = () => {
   const textRef = useRef(null);
   const hasPlayed = useRef(false);
   const nameRef = useRef(null);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 30) {
+        setShowScrollHint(false);
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -108,6 +119,7 @@ const Home = () => {
 
   return (
     <HomeContainer ref={containerRef}>
+      {showScrollHint && <ScrollHint />}
       <PaperWrapper ref={wrapperRef}>
         <PaperBottom>
           <TitleWrap>
@@ -148,6 +160,8 @@ const Home = () => {
 export default Home;
 
 const HomeContainer = styled.section`
+  max-width: 480px;
+  margin: 0 auto;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -168,6 +182,7 @@ const PaperWrapper = styled.div`
 
 const PaperFace = styled.div`
   background-image: url(${paperBackground});
+  background-color: #fefbf6;
   background-size: contain;
   width: 100%;
   height: 100%;

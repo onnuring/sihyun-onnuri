@@ -24,9 +24,9 @@ function App() {
 
   return (
     <>
-      {!loading && <PreloadAssets onReady={() => setLoading(true)} />}
+      {loading && <PreloadAssets onReady={() => setLoading(false)} />}
       <AnimatePresence mode="wait">
-        {!loading ? (
+        {loading ? (
           <motion.div
             key="loading"
             initial={{ opacity: 1 }}

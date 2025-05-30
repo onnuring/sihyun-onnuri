@@ -133,19 +133,10 @@ const TabContent = styled.div`
   color: #333;
   padding: 0 10px;
   overflow: hidden;
-  transition: max-height 0.5s ease;
+  transition: all 0.5s ease;
   max-height: ${({ $isActive, $maxHeight }) =>
-    $isActive ? `${$maxHeight}px` : "0px"};
+    $isActive ? `${$maxHeight + 10}px` : "0"};
   opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};
-  transition-property: max-height, opacity;
-  transition-duration: 0.5s;
-  /* animation: fadeIn 0.5s forwards ease-in; */
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
 `;
 const Paragraph = styled.p`
   display: flex;

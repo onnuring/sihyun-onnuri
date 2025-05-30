@@ -56,7 +56,7 @@ export const NAVIGATION_LINKS = [
   },
   {
     name: "카카오맵",
-    url: "https://kko.kakao.com/mCgaCcxgFy",
+    url: "https://kko.kakao.com/7EvCCbUvic",
     icon: kakaoMap,
   },
   {
