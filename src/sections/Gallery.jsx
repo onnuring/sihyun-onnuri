@@ -56,14 +56,14 @@ const Gallery = () => {
         </SubTitle>
       </TitleWrapper>
       <Columns>
-        <Column className="gallery-column" data-speed="1.9">
+        <Column className="gallery-column" data-speed="2.4">
           {LEFT_IMAGES.map((src, i) => (
             <ImageBox key={`left-${i}`} onClick={() => handleImageClick(i)}>
               <img src={src} alt={`wedding left ${i}`} />
             </ImageBox>
           ))}
         </Column>
-        <Column className="gallery-column" data-speed="2.2">
+        <Column className="gallery-column" data-speed="3.2">
           {RIGHT_IMAGES.map((src, i) => (
             <ImageBox
               key={`right-${i}`}
@@ -90,7 +90,7 @@ export default Gallery;
 const GalleryWrapper = styled.section`
   max-width: 480px;
   width: 100vw;
-  height: 150vh;
+  height: 300vh;
   margin: 0 auto;
   padding: 70px 20px;
   overflow: hidden;

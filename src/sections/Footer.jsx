@@ -31,7 +31,7 @@ const Footer = () => {
             ease: "none",
             scrollTrigger: {
               trigger: footerRef.current,
-              start: "center bottom",
+              start: "top center",
               end: "center center",
               scrub: 0.5,
             },
@@ -79,7 +79,7 @@ const Footer = () => {
       />
       <ParallaxLayer
         className="parallax-layer layer4"
-        data-depth="-0.2"
+        data-depth="0"
         style={{ backgroundImage: `url(${layer4})` }}
       >
         <ButtonOverlay>
@@ -127,7 +127,7 @@ const ParallaxLayer = styled.div`
     bottom: -400px;
   }
   &.layer4 {
-    bottom: -30px;
+    bottom: -200px;
   }
 `;
 const ButtonOverlay = styled.div`

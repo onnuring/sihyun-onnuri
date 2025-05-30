@@ -6,11 +6,21 @@ import {
   snap3,
   snap4,
   studio1,
+  studio10,
+  studio11,
+  studio12,
+  studio13,
+  studio14,
+  studio15,
+  studio16,
   studio2,
   studio3,
   studio4,
   studio5,
   studio6,
+  studio7,
+  studio8,
+  studio9,
   tMap,
 } from "../assets/images";
 
@@ -156,8 +166,30 @@ export const TAB_INFO_CONTENTS = {
 };
 
 //gallery
-export const LEFT_IMAGES = [studio1, studio3, snap2, snap4, studio6];
-export const RIGHT_IMAGES = [studio2, snap1, snap3, studio4, studio5];
+export const LEFT_IMAGES = [
+  studio1,
+  studio3,
+  studio5,
+  studio7,
+  studio9,
+  snap2,
+  snap4,
+  studio11,
+  studio14,
+  studio16,
+];
+export const RIGHT_IMAGES = [
+  studio2,
+  studio4,
+  studio6,
+  studio8,
+  studio10,
+  snap1,
+  snap3,
+  studio12,
+  studio13,
+  studio15,
+];
 
 //account
 export const GROOM_ACCOUNTS = [

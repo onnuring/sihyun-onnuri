@@ -33,12 +33,14 @@
 
 :root {
   --title-color: #d97d83;
+  --swiper-theme-color: #fff;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: #333;
+  -webkit-text-size-adjust: 100%;
 }
 .pin-spacer {
   overflow-x: hidden !important;

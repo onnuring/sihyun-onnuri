@@ -175,7 +175,7 @@ const PaperFace = styled.div`
   justify-content: center;
   align-items: center;
   font-family: serif;
-  font-size: 1.2rem;
+  font-size: 20px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
   backface-visibility: visible;
   position: absolute;

@@ -20,7 +20,7 @@ const WeddingCalendar = () => {
         src={heart}
         alt="heart icon"
         style={{
-          width: "1.2rem",
+          width: "18px",
           display: "inline-block",
           margin: "0 4px",
         }}

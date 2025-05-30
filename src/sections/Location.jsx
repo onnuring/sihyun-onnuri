@@ -105,7 +105,7 @@ const NaviLinks = styled.div`
     color: #333;
     border: 1px solid #f0eae7;
     border-radius: 5px;
-    font-size: 0.85rem;
+    font-size: 14px;
     padding: 6px 0;
 
     img {
@@ -119,7 +119,7 @@ const NaviLinks = styled.div`
 const InfoList = styled.ul`
   width: 100%;
   text-align: left;
-  font-size: 0.95rem;
+  font-size: 16px;
   padding: 30px 20px 0;
   list-style: none;
   li {

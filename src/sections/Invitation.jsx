@@ -32,7 +32,7 @@ const Invitation = () => {
 export default Invitation;
 
 const InvitationWrapper = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   font-family: invitationFont;
   color: #1f1f1f;
