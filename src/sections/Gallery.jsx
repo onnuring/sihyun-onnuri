@@ -107,11 +107,11 @@ const GalleryWrapper = styled.section`
   margin: 0 auto;
   padding: 70px 20px;
   overflow: hidden;
+
   @media (max-width: 413px) {
     height: 2000px;
   }
 
-  /* ~360px */
   @media (max-width: 360px) {
     height: 1800px;
   }

@@ -7,36 +7,46 @@ import { TAB_INFO_CONTENTS, TAB_INFO_MENUS } from "../constants/customInfo";
 const Information = () => {
   const [activeTab, setActiveTab] = useState("예식장안내");
   const [underlineStyle, setUnderlineStyle] = useState({
-    left: 20,
-    width: 98,
+    left: 0,
+    width: 0,
   });
   const [heights, setHeights] = useState({});
   const tabRefs = useRef({});
   const contentRefs = useRef({});
 
   useLayoutEffect(() => {
-    const timer = setTimeout(() => {
-      const tabElement = tabRefs.current[activeTab];
-      if (tabElement && tabElement.parentNode) {
-        const rect = tabElement.getBoundingClientRect();
-        const parentRect = tabElement.parentNode.getBoundingClientRect();
-        setUnderlineStyle({
-          left: rect.left - parentRect.left,
-          width: rect.width,
-        });
-      }
-
-      const newHeights = {};
-      Object.keys(TAB_INFO_CONTENTS).forEach((key) => {
-        const el = contentRefs.current[key];
-        if (el) {
-          newHeights[key] = el.scrollHeight;
+    const updateUI = () => {
+      requestAnimationFrame(() => {
+        const tabElement = tabRefs.current[activeTab];
+        if (tabElement && tabElement.parentNode) {
+          const rect = tabElement.getBoundingClientRect();
+          const parentRect = tabElement.parentNode.getBoundingClientRect();
+          setUnderlineStyle({
+            left: rect.left - parentRect.left,
+            width: rect.width,
+          });
         }
-      });
-      setHeights(newHeights);
-    }, 100);
 
-    return () => clearTimeout(timer);
+        const newHeights = {};
+        Object.keys(TAB_INFO_CONTENTS).forEach((key) => {
+          const el = contentRefs.current[key];
+          if (el) {
+            newHeights[key] = el.scrollHeight;
+          }
+        });
+        setHeights(newHeights);
+      });
+    };
+
+    // 처음 실행
+    updateUI();
+
+    // 윈도우 리사이즈 시에도 실행
+    window.addEventListener("resize", updateUI);
+
+    return () => {
+      window.removeEventListener("resize", updateUI);
+    };
   }, [activeTab]);
   return (
     <InformationWrapper>
@@ -135,8 +145,9 @@ const TabContent = styled.div`
   overflow: hidden;
   transition: all 0.5s ease;
   max-height: ${({ $isActive, $maxHeight }) =>
-    $isActive ? `${$maxHeight + 10}px` : "0"};
+    $isActive ? `${$maxHeight}px` : "0"};
   opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};
+  will-change: max-height, opacity;
 `;
 const Paragraph = styled.p`
   display: flex;
