@@ -76,7 +76,7 @@ const Gallery = () => {
             </ImageBox>
           ))}
         </Column>
-        <Column className="gallery-column" data-speed="3.2">
+        <Column className="gallery-column" data-speed="3.0">
           {RIGHT_IMAGES.map((src, i) => (
             <ImageBox
               key={`right-${i}`}
@@ -107,6 +107,14 @@ const GalleryWrapper = styled.section`
   margin: 0 auto;
   padding: 70px 20px;
   overflow: hidden;
+  @media (max-width: 413px) {
+    height: 2000px;
+  }
+
+  /* ~360px */
+  @media (max-width: 360px) {
+    height: 1800px;
+  }
 `;
 const TitleWrapper = styled.div`
   margin-bottom: 50px;

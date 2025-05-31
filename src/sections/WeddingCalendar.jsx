@@ -114,7 +114,7 @@ const StyledDayPicker = styled(DayPicker)`
 
   .highlight {
     background-image: url(${heart});
-    background-size: 70%;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
     color: white;

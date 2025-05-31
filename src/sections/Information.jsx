@@ -147,6 +147,7 @@ const Paragraph = styled.p`
   margin-bottom: 16px;
   font-family: basicFont;
   word-break: keep-all;
+  white-space: pre-wrap;
 `;
 
 const Emoji = styled.span`

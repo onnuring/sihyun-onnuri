@@ -3,7 +3,12 @@ import styled from "styled-components";
 import SubTitle from "../components/SubTitle";
 import Title from "../components/Title";
 import KakaoMap from "../components/KakaoMap";
-import { NAVIGATION_LINKS, TRANSPORT_INFO } from "../constants/customInfo";
+import {
+  LOCATION_ADDRESS,
+  LOCATION_NAME,
+  NAVIGATION_LINKS,
+  TRANSPORT_INFO,
+} from "../constants/customInfo";
 import CopyButton from "../components/CopyButton";
 
 const Location = () => {
@@ -16,11 +21,10 @@ const Location = () => {
 
       <MapWrapper>
         <AddressText>
-          <span>메종디탈리 | 경기 성남시 수정구 설개로 39</span>
-          <CopyButton
-            copyText={"경기 성남시 수정구 설개로 39"}
-            obj={"주소가"}
-          />
+          <span>
+            {LOCATION_NAME} | {LOCATION_ADDRESS}
+          </span>
+          <CopyButton copyText={LOCATION_ADDRESS} obj={"주소가"} />
         </AddressText>
         <KakaoMap />
 
@@ -89,6 +93,10 @@ const AddressText = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  span {
+    font-size: 14px;
+  }
 `;
 
 const NaviLinks = styled.div`
