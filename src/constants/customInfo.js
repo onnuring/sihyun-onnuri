@@ -216,7 +216,7 @@ export const RIGHT_IMAGES = [
 //account
 export const GROOM_ACCOUNTS = [
   { name: "김시현", bank: "국민", account: "937702-00-139066" },
-  { name: "김태한", bank: "국민", account: "097602-04-017404" },
+  { name: "김태한", bank: "신한", account: "110-167-634628" },
   { name: "장재연", bank: "국민", account: "818501-04-103103" },
 ];
 

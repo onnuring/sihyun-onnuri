@@ -4,7 +4,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { layer1, layer2, layer3, layer4 } from "../assets/images";
 import KakaoShareButton from "../components/KakaoShareButton";
-import Title from "../components/Title";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,22 +45,8 @@ const Footer = () => {
     };
   }, []);
 
-  const [daysTogether, setDaysTogether] = useState(0);
-
-  useEffect(() => {
-    const startDate = new Date("2018-07-07");
-    const today = new Date();
-
-    const diffTime = today - startDate;
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    setDaysTogether(diffDays);
-  }, []);
-
   return (
     <FooterWrapper ref={footerRef}>
-      <Title>함께한 시간</Title>
-      <TimeText>"{daysTogether}"일</TimeText>
       <ParallaxLayer
         className="parallax-layer layer1"
         data-depth="0.1"
