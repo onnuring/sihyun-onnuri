@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sihyun-onnuri/static/css/main.264141ba.css",
-    "main.js": "/sihyun-onnuri/static/js/main.15536955.js",
+    "main.js": "/sihyun-onnuri/static/js/main.544f7296.js",
     "static/media/GowunDodum-Regular.ttf": "/sihyun-onnuri/static/media/GowunDodum-Regular.dfb67e2d7072fcac8dc5.ttf",
     "static/media/snap1-1.jpg": "/sihyun-onnuri/static/media/snap1-1.9e1753c1f9982f69b737.jpg",
     "static/media/snap1-2.jpg": "/sihyun-onnuri/static/media/snap1-2.b35c5a520ad70eef9f7e.jpg",
@@ -38,10 +38,10 @@
     "static/media/custom_marker.png": "/sihyun-onnuri/static/media/custom_marker.1e30b7d86cea56a22ef7.png",
     "index.html": "/sihyun-onnuri/index.html",
     "main.264141ba.css.map": "/sihyun-onnuri/static/css/main.264141ba.css.map",
-    "main.15536955.js.map": "/sihyun-onnuri/static/js/main.15536955.js.map"
+    "main.544f7296.js.map": "/sihyun-onnuri/static/js/main.544f7296.js.map"
   },
   "entrypoints": [
     "static/css/main.264141ba.css",
-    "static/js/main.15536955.js"
+    "static/js/main.544f7296.js"
   ]
 }
