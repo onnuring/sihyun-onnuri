@@ -84,6 +84,10 @@ export const TRANSPORT_INFO = [
         text: "• 예식 시간 2시간전 부터 운행됩니다",
         smaller: true,
       },
+      {
+        text: "• 예식장까지 약 15분 소요됩니다",
+        smaller: true,
+      },
     ],
   },
   {
